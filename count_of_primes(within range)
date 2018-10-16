@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+bool isPrime(long A){
+if(A==2 || A==3)
+    return true;
+if(A%2==0 || A%3==0||A==1)
+    return false;
+for(long i=5;i*i<=A;i=i+6)
+    {
+    if(A%i==0|| A%(i+2)==0)
+        return false;
+    }
+    return true;
+}
+int main(){
+	bool prime[100000];
+	memset(prime,false, sizeof(prime)); 
+	prime[2]=true;
+	for(long long i=3;i<=100000;i=i+2){
+		if(isPrime(i))
+			prime[i]=true;	
+	}
+	long n;
+	cin>>n;
+	for(long j=0;j<n;j++){
+	
+    long low,high,count=0;;
+	cin>>low>>high;
+	for(long long i=low;i<=high;i++){
+		if(prime[i]==true)
+			count++;
+	}
+	cout<<count<<endl;
+}
+
+}
